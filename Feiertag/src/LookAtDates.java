@@ -1,4 +1,9 @@
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+
+import org.json.JSONException;
 
 public class LookAtDates {
 	
@@ -9,18 +14,18 @@ public class LookAtDates {
 		static int fri;
 		static boolean positive =true;
 		
-	public static void finalDays(LocalDate today, int tYears) {
+	public static void finalDays(LocalDate today, int tYears) throws MalformedURLException, JSONException, IOException {
 
 		if(tYears<0) {
 			System.out.println("Please use a positive number");
 			positive=false;
 			return;
 		}
-		mon = getDays.monday(today, tYears);
-		tue = getDays.tuesday(today, tYears);
-		wed = getDays.wednesday(today, tYears);
-		thu = getDays.thursday(today, tYears);
-		fri = getDays.friday(today, tYears);
+		mon = GetDays.week(today, tYears, DayOfWeek.MONDAY);
+		tue = GetDays.week(today, tYears, DayOfWeek.TUESDAY);
+		wed = GetDays.week(today, tYears, DayOfWeek.WEDNESDAY);
+		thu = GetDays.week(today, tYears, DayOfWeek.TUESDAY);
+		fri = GetDays.week(today, tYears, DayOfWeek.FRIDAY);
 		
 		FreeDays.fillArrayList(today,tYears);
 
@@ -46,8 +51,15 @@ public class LookAtDates {
 
 			}
 		}
-		//Subtract the holidays which always fall on the same day
-		mon=mon-(2*tYears);
-		thu=thu-(2*tYears);
+	}
+	
+	public static void ausgabe() {
+		if(LookAtDates.positive) {
+			System.out.println("Monday: "+mon);
+			System.out.println("Tuesday: "+tue);
+			System.out.println("Wednesday: "+wed);
+			System.out.println("Thursday: "+thu);
+			System.out.println("Friday: "+fri);
+		}
 	}
 }
