@@ -7,6 +7,18 @@ import org.json.JSONException;
 
 public class LookAtDates {
 	
+		static int monh2;
+		static int tueh2;
+		static int wedh2;
+		static int thuh2;
+		static int frih2;
+		
+		static int monh;
+		static int tueh;
+		static int wedh;
+		static int thuh;
+		static int frih;
+		
 		static int mon;
 		static int tue;
 		static int wed;
@@ -27,24 +39,58 @@ public class LookAtDates {
 		thu = GetDays.week(today, tYears, DayOfWeek.TUESDAY);
 		fri = GetDays.week(today, tYears, DayOfWeek.FRIDAY);
 		
+		monh = GetDays.week(today, tYears, DayOfWeek.MONDAY);
+		tueh = GetDays.week(today, tYears, DayOfWeek.TUESDAY);
+		wedh = GetDays.week(today, tYears, DayOfWeek.WEDNESDAY);
+		thuh = GetDays.week(today, tYears, DayOfWeek.TUESDAY);
+		frih = GetDays.week(today, tYears, DayOfWeek.FRIDAY);
+		
 		FreeDays.fillArrayList(today,tYears);
-
+		
 		for(int i=0;i<FreeDays.freeDays.size();i++) {
 			switch (FreeDays.freeDays.get(i).getDayOfWeek()) {
 			case MONDAY:
-				mon--;
+				mon++;
 				break;
 			case TUESDAY:
-				tue--;
+				tue++;
 				break;
 			case WEDNESDAY:
-				wed--;
+				wed++;
 				break;
 			case THURSDAY:
-				thu--;
+				thu++;
 				break;
 			case FRIDAY:
-				fri--;
+				fri++;
+				break;
+			default:
+				break;
+
+			}
+		}
+
+		for(int i=0;i<FreeDays.freeDaysHolidays.size();i++) {
+			switch (FreeDays.freeDaysHolidays.get(i).getDayOfWeek()) {
+			case MONDAY:
+				monh--;
+				monh2++;
+				break;
+			case TUESDAY:
+				tueh--;
+				tueh2++;
+				break;
+			case WEDNESDAY:
+				wedh--;
+				wedh2++;
+				break;
+			case THURSDAY:
+				thuh--;
+				thuh2++;
+				break;
+			case FRIDAY:
+				frih--;
+				frih2++;
 				break;
 			default:
 				break;
@@ -55,6 +101,14 @@ public class LookAtDates {
 	
 	public static void ausgabe() {
 		if(LookAtDates.positive) {
+			System.out.println("Mit Ferien:");
+			System.out.println("Monday: "+monh);
+			System.out.println("Tuesday: "+tueh);
+			System.out.println("Wednesday: "+wedh);
+			System.out.println("Thursday: "+thuh);
+			System.out.println("Friday: "+frih+"\n");
+			
+			System.out.println("Ohen Ferien:");
 			System.out.println("Monday: "+mon);
 			System.out.println("Tuesday: "+tue);
 			System.out.println("Wednesday: "+wed);
