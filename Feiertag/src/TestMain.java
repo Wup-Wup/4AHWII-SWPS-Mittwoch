@@ -6,14 +6,24 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 
 public class TestMain extends Application{
 	
 	public static void main(String[] args) throws Exception {
 		LookAtDates.finalDays(LocalDate.of(2020, 1, 1), 1);
-		LookAtDates.ausgabe();
+	  //LookAtDates.ausgabe();
 		
 		launch(args);
+		Database.db();
+		
 	}
 	
 	
@@ -41,4 +51,7 @@ public class TestMain extends Application{
 	        stage.setScene(scene);
 	        stage.show();
 	    }
+	 
+	 
+	 
 }

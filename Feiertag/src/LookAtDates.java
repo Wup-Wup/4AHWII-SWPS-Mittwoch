@@ -7,13 +7,14 @@ import org.json.JSONException;
 
 public class LookAtDates {
 	
+		static boolean positive =true;
 		static int monh2;
 		static int tueh2;
 		static int wedh2;
 		static int thuh2;
 		static int frih2;
 		
-		static int monh;
+	/*	static int monh;
 		static int tueh;
 		static int wedh;
 		static int thuh;
@@ -24,7 +25,7 @@ public class LookAtDates {
 		static int wed;
 		static int thu;
 		static int fri;
-		static boolean positive =true;
+		 */
 		
 	public static void finalDays(LocalDate today, int tYears) throws MalformedURLException, JSONException, IOException {
 
@@ -32,8 +33,10 @@ public class LookAtDates {
 			System.out.println("Please use a positive number");
 			positive=false;
 			return;
-		}
-		mon = GetDays.week(today, tYears, DayOfWeek.MONDAY);
+	}
+		FreeDays.fillArrayList(today,tYears);
+	
+	/*	mon = GetDays.week(today, tYears, DayOfWeek.MONDAY);
 		tue = GetDays.week(today, tYears, DayOfWeek.TUESDAY);
 		wed = GetDays.week(today, tYears, DayOfWeek.WEDNESDAY);
 		thu = GetDays.week(today, tYears, DayOfWeek.TUESDAY);
@@ -44,9 +47,7 @@ public class LookAtDates {
 		wedh = GetDays.week(today, tYears, DayOfWeek.WEDNESDAY);
 		thuh = GetDays.week(today, tYears, DayOfWeek.TUESDAY);
 		frih = GetDays.week(today, tYears, DayOfWeek.FRIDAY);
-		
-		FreeDays.fillArrayList(today,tYears);
-		
+	
 		for(int i=0;i<FreeDays.freeDays.size();i++) {
 			switch (FreeDays.freeDays.get(i).getDayOfWeek()) {
 			case MONDAY:
@@ -66,30 +67,31 @@ public class LookAtDates {
 				break;
 			default:
 				break;
-
 			}
-		}
+		}		
+		
+		*/
 
 		for(int i=0;i<FreeDays.freeDaysHolidays.size();i++) {
 			switch (FreeDays.freeDaysHolidays.get(i).getDayOfWeek()) {
 			case MONDAY:
-				monh--;
+			//	monh--;
 				monh2++;
 				break;
 			case TUESDAY:
-				tueh--;
+			//	tueh--;
 				tueh2++;
 				break;
 			case WEDNESDAY:
-				wedh--;
+			//	wedh--;
 				wedh2++;
 				break;
 			case THURSDAY:
-				thuh--;
+			//	thuh--;
 				thuh2++;
 				break;
 			case FRIDAY:
-				frih--;
+			//	frih--;
 				frih2++;
 				break;
 			default:
@@ -99,7 +101,7 @@ public class LookAtDates {
 		}
 	}
 	
-	public static void ausgabe() {
+/*	public static void ausgabe() {
 		if(LookAtDates.positive) {
 			System.out.println("Mit Ferien:");
 			System.out.println("Monday: "+monh);
@@ -115,5 +117,5 @@ public class LookAtDates {
 			System.out.println("Thursday: "+thu);
 			System.out.println("Friday: "+fri);
 		}
-	}
+	}*/
 }
