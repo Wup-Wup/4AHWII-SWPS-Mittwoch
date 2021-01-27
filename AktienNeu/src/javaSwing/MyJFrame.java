@@ -59,7 +59,7 @@ public class MyJFrame {
         ts_collection.addSeries(ts1);
         ts_collection.addSeries(ts2);
         
-        JFreeChart jChart = ChartFactory.createTimeSeriesChart(tableName, "Date", "Close Value in $", ts_collection, false, true ,false);
+        JFreeChart jChart = ChartFactory.createTimeSeriesChart(tableName, "Date", "Close Value in $", ts_collection, true, true ,false);
         XYPlot plot = (XYPlot) jChart.getPlot();
         plot.getRenderer().setDefaultStroke(new BasicStroke(2.0f));
         ((AbstractRenderer) plot.getRenderer()).setAutoPopulateSeriesStroke(false);
