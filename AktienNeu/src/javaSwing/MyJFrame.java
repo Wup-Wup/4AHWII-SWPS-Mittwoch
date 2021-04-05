@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -110,15 +111,18 @@ public class MyJFrame {
 				folder.mkdir();
 			} catch (SecurityException e) {
 				e.printStackTrace();
+				System.out.println("lul");
 			}
 		}
-
-		try {
-			ChartUtils.saveChartAsPNG(new File(
-					"C:\\Users\\Alexander Bertoni\\Documents\\Aktien\\" + tableName + "\\" + LocalDate.now() + ".png"),
-					jChart, 1000, 600);
-		} catch (IOException e) {
-			e.printStackTrace();
+		File file = new File(dirPath+tableName+"\\"+LocalDate.now());
+		if(!file.exists()) {
+			try {
+				ChartUtils.saveChartAsPNG(new File(
+						"C:\\Users\\Alexander Bertoni\\Documents\\Aktien\\" + tableName + "\\" + LocalDate.now() + ".png"),
+						jChart, 1000, 600);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 import org.json.JSONException;
 
@@ -19,7 +19,6 @@ public class AktienNeu {
 
 	public static void main(String[] args) throws MalformedURLException, JSONException, IOException {
 
-		ArrayList<String> aktien = new ArrayList<String>();
 		String aktie;
 
 		File file = new File("Aktienkurse.txt");
@@ -51,6 +50,12 @@ public class AktienNeu {
 							dataB1.getBackground(aktie), TextReader.reader("Path.txt"));
 					dataB1.closeConnection();
 				}
+				
+				try {
+					TimeUnit.SECONDS.sleep(12);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -61,5 +66,6 @@ public class AktienNeu {
 				} catch (IOException e) {
 				}
 		}
+		System.exit(0);
 	}
 }
