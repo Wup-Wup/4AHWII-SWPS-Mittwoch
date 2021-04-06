@@ -4,15 +4,8 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.math.BigDecimal;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.TreeMap;
 
@@ -27,8 +20,6 @@ import org.jfree.chart.renderer.AbstractRenderer;
 import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
-
-import database.DatabaseTimeSeries;
 
 public class MyJFrame {
 
@@ -118,7 +109,7 @@ public class MyJFrame {
 		if(!file.exists()) {
 			try {
 				ChartUtils.saveChartAsPNG(new File(
-						"C:\\Users\\Alexander Bertoni\\Documents\\Aktien\\" + tableName + "\\" + LocalDate.now() + ".png"),
+						dirPath + tableName + "\\" + LocalDate.now() + ".png"),
 						jChart, 1000, 600);
 			} catch (IOException e) {
 				e.printStackTrace();
