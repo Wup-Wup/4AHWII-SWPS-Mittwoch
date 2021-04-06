@@ -105,11 +105,11 @@ public class MyJFrame {
 				System.out.println("lul");
 			}
 		}
-		File file = new File(dirPath+tableName+"\\"+LocalDate.now());
+		File file = new File(dirPath+"\\"+LocalDate.now());
 		if(!file.exists()) {
 			try {
 				ChartUtils.saveChartAsPNG(new File(
-						dirPath + tableName + "\\" + LocalDate.now() + ".png"),
+						dirPath + "\\" + LocalDate.now() + ".png"),
 						jChart, 1000, 600);
 			} catch (IOException e) {
 				e.printStackTrace();
