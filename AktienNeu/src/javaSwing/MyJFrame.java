@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 
@@ -104,6 +105,11 @@ public class MyJFrame {
 				e.printStackTrace();
 				System.out.println("lul");
 			}
+		}
+		try {	
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
 		}
 		File file = new File(dirPath+"\\"+LocalDate.now());
 		if(!file.exists()) {
