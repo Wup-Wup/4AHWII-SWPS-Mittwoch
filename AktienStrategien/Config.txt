@@ -1,0 +1,9 @@
+sqlUsername=java
+sqlPassword=java
+DataBaseName=timeseriesdatabase
+ConnectionUrl=jdbc:mysql://localhost:3306/timeseriesdatabase?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+
+StartDate=2015-10-08
+
+TSLA%
+SQ%
