@@ -7,7 +7,7 @@ import java.util.Properties;
 public class Config {
 
 	public static String configRead(String key) {
-		File Config = new File("C:\\Users\\berto\\Documents\\AktienNeu\\Config.txt");
+		File Config = new File("C:\\Users\\berto\\Documents\\Schule\\4. Klasse\\Programmieren\\Programme\\AktienStrategien\\Config.txt");
 		Properties properties = new Properties();
 
 			BufferedInputStream bis = null;
