@@ -83,7 +83,7 @@ public class Strat200optimized {
 		BigDecimal get200avg = Database.get200avg(date, ticker);
 
 		if (boughtOrSold(ticker)) {
-			if (compareBigger(close, get200avg)) {
+			if (compareSmaller(close, get200avg)) {
 
 				double mbefore = moneyBefore(date, ticker).doubleValue();
 				int count = getCount(date, ticker).intValue();
@@ -92,7 +92,7 @@ public class Strat200optimized {
 				insertIntoTable(date, ticker, false, 0, BigDecimal.valueOf(nmoney));
 			}
 		} else {
-			if (compareSmaller(close, get200avg)) {
+			if (compareBigger(close, get200avg)) {
 
 				double mbefore = moneyBefore(date, ticker).doubleValue();
 				int roundedNumber = (int) (mbefore / close.doubleValue());
