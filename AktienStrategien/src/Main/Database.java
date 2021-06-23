@@ -6,11 +6,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 
 public class Database {
 
 	public static Connection connection;
+	static  NumberFormat n = NumberFormat.getInstance();
+	
+
 
 	public static void openConnection(String connectionUrl, String sqlUsername, String sqlPassword) {
 		if (connection != null) {
@@ -38,7 +42,7 @@ public class Database {
 	public static void createTable(String ticker) {
 		try {
 			PreparedStatement pstatement = connection.prepareStatement("create table if not exists " + ticker
-					+ " (day varchar(100) not null primary key, ticker varchar(10) not null, flag boolean, count int, konto decimal(11,2))");
+					+ " (day varchar(100) not null primary key, ticker varchar(10) not null, flag boolean, count int, konto decimal(11,4))");
 			pstatement.executeUpdate();
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
@@ -55,6 +59,8 @@ public class Database {
 	}
 
 	public static double print(String ticker, String method, double startMoney) {
+		
+		n.setMaximumFractionDigits(2);
 
 		System.out.println("Strategie " + method + ":");
 
@@ -65,11 +71,11 @@ public class Database {
 			ResultSet countSet = pstatement.executeQuery();
 			countSet.next();
 			String day = countSet.getString(1);
-			String konto = countSet.getString(2);
-			System.out.println("Enddatum: " + day + "\nEndgeld: " + konto + "€");
-			System.out.println("Prozentuelle Abweichung: " + (Double.parseDouble(konto) / startMoney) * 100 + "%\n");
+			double konto = countSet.getDouble(2);
+			System.out.println("Enddatum: " + day + "\nEndgeld: " + n.format(konto) + "€");
+			System.out.println("Prozentuelle Abweichung: " + (konto / startMoney) * 100 + "%\n");
 
-			return Double.parseDouble(konto);
+			return konto;
 		} catch (SQLException e) {
 			return 0;
 		}

@@ -4,6 +4,6 @@ DataBaseName=timeseriesdatabase
 ConnectionUrl=jdbc:mysql://localhost:3306/timeseriesdatabase?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
 
 StartDate=2010-01-01
-StartMoney=10000
+StartMoney=20000
 
 TSLA%
